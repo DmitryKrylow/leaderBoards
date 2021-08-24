@@ -102,7 +102,7 @@ public class Controller {
 
     @GetMapping("/getAllCompany")
     public List<Company> getAllCompany(){
-        return companyRepos.findAll(Sort.by(Sort.Direction.DESC,"levelCompany"));
+        return companyRepos.findAll();
     }
 
     @GetMapping("/deleteUser")
