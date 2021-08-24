@@ -41,7 +41,7 @@ public class Company {
         return countWorkers;
     }
 
-    public void setCountWorkers(int countWorkers) {
+    public void setCountWorkers(Integer countWorkers) {
         this.countWorkers = countWorkers;
     }
 
