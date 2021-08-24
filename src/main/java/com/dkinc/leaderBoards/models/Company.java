@@ -6,6 +6,9 @@ import javax.persistence.*;
 @Entity
 @Table(name = "company")
 public class Company {
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    public long id;
     @Column
     public Integer levelComapny;
     @Column
@@ -14,10 +17,10 @@ public class Company {
     public Integer countWorkers;
     @Column
     public String ownerName;
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    public long id;
-    public Company(){}
+
+    public Company(){
+
+    }
 
     public Company(String name, Integer countWorkers, String ownerName, Integer levelComapny) {
         this.name = name;
