@@ -19,7 +19,7 @@ public class Company {
     public long id;
     public Company(){}
 
-    public Company(String name, int countWorkers, String ownerName, int levelComapny) {
+    public Company(String name, Integer countWorkers, String ownerName, Integer levelComapny) {
         this.name = name;
         this.countWorkers = countWorkers;
         this.ownerName = ownerName;
