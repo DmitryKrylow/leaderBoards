@@ -10,13 +10,13 @@ public class Company {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     public long id;
     @Column
-    public Integer levelCompany;
-    @Column
     public String name;
     @Column
     public Integer countWorkers;
     @Column
     public String ownerName;
+    @Column
+    public Integer levelCompany;
 
     public Company(){
 
