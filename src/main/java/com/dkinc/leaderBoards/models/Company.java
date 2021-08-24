@@ -10,7 +10,7 @@ public class Company {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     public long id;
     @Column
-    public Integer levelComapny;
+    public Integer levelCompany;
     @Column
     public String name;
     @Column
@@ -22,11 +22,11 @@ public class Company {
 
     }
 
-    public Company(String name, Integer countWorkers, String ownerName, Integer levelComapny) {
+    public Company(String name, Integer countWorkers, String ownerName, Integer levelCompany) {
         this.name = name;
         this.countWorkers = countWorkers;
         this.ownerName = ownerName;
-        this.levelComapny = levelComapny;
+        this.levelCompany = levelCompany;
     }
 
     public String getName() {
