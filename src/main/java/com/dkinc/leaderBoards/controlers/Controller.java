@@ -1,7 +1,9 @@
 package com.dkinc.leaderBoards.controlers;
 
 
+import com.dkinc.leaderBoards.models.Company;
 import com.dkinc.leaderBoards.models.User;
+import com.dkinc.leaderBoards.repositories.CompanyRepos;
 import com.dkinc.leaderBoards.repositories.UserRepos;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,10 +17,28 @@ import java.util.List;
 public class Controller {
 
     public UserRepos userRepos;
+    public CompanyRepos companyRepos;
     private final static String pass = "1208DKdeleteAll";
 
     public Controller(UserRepos userRepos) {
         this.userRepos = userRepos;
+    }
+
+    @PostMapping("/putCompany")
+    public String putCompany(@RequestParam String name, Integer countWorkers, String ownerName, Integer levelCompany){
+        List<Company> companyList = companyRepos.findByName(name);
+        if (companyList.size() > 0){
+            if(!companyList.get(0).ownerName.equals(ownerName)){
+                return "This company already taken";
+            }else{
+                companyRepos.delete(companyList.get(0));
+                companyRepos.save(new Company(name,countWorkers,ownerName,levelCompany));
+                return "Complite update company";
+            }
+        }else{
+            companyRepos.save(new Company(name, countWorkers, ownerName,levelCompany));
+            return "add company complite";
+        }
     }
 
     @PostMapping("/putUser")
@@ -43,8 +63,25 @@ public class Controller {
         }
         return "Пустые параетры";
     }
+
+    @GetMapping("/getCompany")
+    public List<Company> getCompany(@RequestParam String nameCompany, String ownerName){
+        if((nameCompany != null && !nameCompany.equals("")) && (ownerName != null && !ownerName.equals("")))
+            return companyRepos.findByNameAndOwnerName(nameCompany,ownerName);
+        return null;
+    }
+
     @GetMapping("/DKDELETEALLUSER")
-    public String delete(String pass){
+    public String deleteAllUser(String pass){
+        if(this.pass.equals(pass)){
+            userRepos.deleteAll();
+            return "Complite delete";
+        }else{
+            return "Access is denied!";
+        }
+    }
+    @GetMapping("/DKDELETEALLCOMPANY")
+    public String deleteAllCompany(String pass){
         if(this.pass.equals(pass)){
             userRepos.deleteAll();
             return "Complite delete";
@@ -54,9 +91,13 @@ public class Controller {
     }
     @GetMapping("/getAllUser")
     public List<User> getAllUSer(){
-
         return userRepos.findAll(Sort.by(Sort.Direction.DESC,"level"));
     }
+    @GetMapping("/getAllCompany")
+    public List<Company> getAllComapny(){
+        return companyRepos.findAll(Sort.by(Sort.Direction.DESC,"levelCompany"));
+    }
+
     @GetMapping("/deleteUser")
     public String deleteUser(String nickname){
         userRepos.delete(userRepos.findByNickname(nickname).get(0));
