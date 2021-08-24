@@ -95,11 +95,12 @@ public class Controller {
         }
     }
     @GetMapping("/getAllUser")
-    public List<User> getAllUSer(){
+    public List<User> getAllUser(){
         return userRepos.findAll(Sort.by(Sort.Direction.DESC,"level"));
     }
+
     @GetMapping("/getAllCompany")
-    public List<Company> getAllComapny(){
+    public List<Company> getAllCompany(){
         return companyRepos.findAll(Sort.by(Sort.Direction.DESC,"levelCompany"));
     }
 

@@ -4,7 +4,7 @@ package com.dkinc.leaderBoards.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "company")
+@Table(name = "companys")
 public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
