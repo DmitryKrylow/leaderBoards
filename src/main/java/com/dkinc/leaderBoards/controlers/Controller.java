@@ -26,7 +26,9 @@ public class Controller {
     }
 
     @PostMapping("/putCompany")
-    public String putCompany(@RequestParam String name, Integer countWorkers, String ownerName, Integer levelCompany){
+    public String putCompanyDB(@RequestParam String name,
+                               Integer countWorkers, String ownerName, Integer levelCompany)
+    {
         List<Company> companyList = companyRepos.findByName(name);
         if (companyList.size() > 0){
             if(!companyList.get(0).ownerName.equals(ownerName)){
@@ -43,20 +45,22 @@ public class Controller {
     }
 
     @PostMapping("/putUser")
-    public String putUserDB(@RequestParam String nickname, Integer level, String email){
+    public String putUserDB(@RequestParam String nickname, Integer level, String email)
+    {
         List<User> userList = userRepos.findByEmail(email);
-        if(userList.size() > 0){
-            if(!userList.get(0).level.equals(level)){
+        if(userList.size() > 0) {
+            if (!userList.get(0).level.equals(level)) {
                 userRepos.delete(userList.get(0));
-                userRepos.save(new User(nickname,level,email));
+                userRepos.save(new User(nickname, level, email));
                 return "Complite update user";
             }
         }else{
             userRepos.save(new User(nickname,level,email));
             return "add user complite";
         }
-        return "Fail";
+        return "fail";
     }
+
     @GetMapping("/getUser")
     public String getMap(@RequestParam String nickname){
         if(nickname != null && !nickname.equals("")) {
