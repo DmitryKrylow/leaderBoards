@@ -7,11 +7,11 @@ import javax.persistence.*;
 @Table(name = "company")
 public class Company {
     @Column
-    public int levelComapny;
+    public Integer levelComapny;
     @Column
     public String name;
     @Column
-    public int countWorkers;
+    public Integer countWorkers;
     @Column
     public String ownerName;
     @Id
