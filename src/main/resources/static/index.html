@@ -3,23 +3,59 @@
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <meta charset="UTF-8">
-    <title>Главная страница</title>
+    <title>Тесты</title>
 </head>
 <body>
 <div class="container">
     <h1>
-        Главная страница
+        Тесты
     </h1>
     <div class="centered">
-
-        <form name='test' method='post' action='/putUser'>
-            <p><b>Nickname:</b><br>
-                <input type='text' class="form-control" name='nickname' size='40'>
+        <h3>
+            Тест добавления компаний
+        </h3>
+        <form name='testCompany' method='post' action='/putCompany'>
+            <p><b>NameComapny:</b><br>
+                <input type='text' class="form-control" name='name' size='40'>
             </p>
-            <p><b>Level:</b><br>
-                <input type='number' class="form-control" name='level' size='40'>
+            <p><b>countWorkers:</b><br>
+                <input type='number' class="form-control" name='countWorkers' size='40'>
+            </p>
+            <p><b>ownerName:</b><br>
+                <input type='text' class="form-control" name='ownerName' size='40'>
+            </p>
+            <p><b>levelComapny:</b><br>
+                <input type='number' class="form-control" name='levelComapny' size='40'>
             </p>
             <button class="btn btn-primary" type='submit'>Отправить</button>
+        </form>
+        <h3>
+            Тест добавления пользователей
+        </h3>
+        <form name='testUser' method='post' action='/putUser'>
+            <p><b>nickname:</b><br>
+                <input type='text' class="form-control" name='nickname' size='40'>
+            </p>
+            <p><b>level:</b><br>
+                <input type='number' class="form-control" name='level' size='40'>
+            </p>
+            <p><b>email:</b><br>
+                <input type='text' class="form-control" name='level' size='40'>
+            </p>
+            <button class="btn btn-primary" type='submit'>Отправить</button>
+        </form>
+        <h3>Очистка</h3>
+        <form name='testUser' method='post' action='/DKDELETEALLUSER'>
+            <p><b>pass</b><br>
+                <input type='text' class="form-control" name='pass' size='40'>
+            </p>
+            <button class="btn btn-primary" type='submit'>Удалить всех пользователей</button>
+        </form>
+        <form name='testUser' method='post' action='/DKDELETEALLCOMPANY'>
+            <p><b>pass</b><br>
+                <input type='text' class="form-control" name='pass' size='40'>
+            </p>
+            <button class="btn btn-primary" type='submit'>Удалить все компании</button>
         </form>
     </div>
 </div>

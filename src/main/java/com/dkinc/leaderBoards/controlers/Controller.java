@@ -5,6 +5,7 @@ import com.dkinc.leaderBoards.models.Company;
 import com.dkinc.leaderBoards.models.User;
 import com.dkinc.leaderBoards.repositories.CompanyRepos;
 import com.dkinc.leaderBoards.repositories.UserRepos;
+import org.apache.tomcat.util.buf.Ascii;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +19,7 @@ public class Controller {
 
     public UserRepos userRepos;
     public CompanyRepos companyRepos;
-    private final static String pass = "1208DKdeleteAll";
+    private final static Integer pass = -1063267386;
 
     public Controller(UserRepos userRepos) {
         this.userRepos = userRepos;
@@ -71,18 +72,18 @@ public class Controller {
         return null;
     }
 
-    @GetMapping("/DKDELETEALLUSER")
+    @PostMapping("/DKDELETEALLUSER")
     public String deleteAllUser(String pass){
-        if(this.pass.equals(pass)){
+        if(this.pass.equals(pass.hashCode())){
             userRepos.deleteAll();
             return "Complite delete";
         }else{
             return "Access is denied!";
         }
     }
-    @GetMapping("/DKDELETEALLCOMPANY")
+    @PostMapping("/DKDELETEALLCOMPANY")
     public String deleteAllCompany(String pass){
-        if(this.pass.equals(pass)){
+        if(this.pass.equals(pass.hashCode())){
             userRepos.deleteAll();
             return "Complite delete";
         }else{
