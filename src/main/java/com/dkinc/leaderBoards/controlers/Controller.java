@@ -21,8 +21,9 @@ public class Controller {
     public CompanyRepos companyRepos;
     private final static Integer pass = -1063267386;
 
-    public Controller(UserRepos userRepos) {
+    public Controller(UserRepos userRepos, CompanyRepos companyRepos) {
         this.userRepos = userRepos;
+        this.companyRepos = companyRepos;
     }
 
     @PostMapping("/putCompany")
