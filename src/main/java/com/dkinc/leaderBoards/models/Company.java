@@ -4,7 +4,7 @@ package com.dkinc.leaderBoards.models;
 import javax.persistence.*;
 
 @Entity
-@Table (name = "company")
+@Table(name = "company")
 public class Company {
     @Column
     public int levelComapny;
