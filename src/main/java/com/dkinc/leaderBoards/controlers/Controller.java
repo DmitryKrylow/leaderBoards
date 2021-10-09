@@ -67,7 +67,7 @@ public class Controller {
         if(nickname != null && !nickname.equals("")) {
             return userRepos.findByNickname(nickname).get(0).toString();
         }
-        return "Пустые параетры";
+        return "Пустые параметры";
     }
 
     @GetMapping("/getCompany")
